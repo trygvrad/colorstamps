@@ -3,7 +3,7 @@
 Python package for 2D colormaps. 
 Most included colormaps are based on the 'CAM02-LCD' colorspace as defined in the package colorspacious (https://pypi.org/project/colorspacious/)
 
-Documentatoin is hosted at https://colorstamps.readthedocs.io/en/latest/ but a summary follows below:
+Documentation is hosted at https://colorstamps.readthedocs.io/en/latest/ but a summary follows below:
 
 
 Installation:
