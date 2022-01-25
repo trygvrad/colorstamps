@@ -35,11 +35,11 @@ axes[1].set_xlabel(r'$\omega$')
 ```
 
 
-![](/images/example0.png?raw=true)
+![](docs/source/images/example0.png?raw=true)
 
 Examples of included colormaps are shown below:
 
-![](/images/colormaps.png?raw=true)
+![](docs/source/images/colormaps.png?raw=true)
 ### Customization
 All the colormaps are called by colorstamps.stamps.get_cmap() and the following keyword can be used with either colorstamps.apply_stamp() or colorstamps.stamps.get_cmap() to customize the colormaps:
 ```
@@ -69,18 +69,18 @@ fig, ax = stamp.eval()
 stamp = colorstamps.Stamp('peak')
 fig, ax = stamp.eval()
 ```
-![](/images/eval_hsv.png?raw=true)
-![](/images/eval_peak.png?raw=true)
+![](docs/source/images/eval_hsv.png?raw=true)
+![](docs/source/images/eval_peak.png?raw=true)
 
 The package also supports different methods for clipping data to the colormap, using the 'clip' keyword in colorstamps.apply_stamp()
 
-![](/images/point_outside_colormap.png?raw=true)
+![](docs/source/images/point_outside_colormap.png?raw=true)
 
 ### Additional colormaps
 
 Additional colormaps available by converting 1d colormaps in matplotlib to 2d colormaps by varying the lightness along the y-axis:
 
-![](/images/mpl_colormaps.png?raw=true)
+![](docs/source/images/mpl_colormaps.png?raw=true)
 
 ### User-provided colormaps
 Custom colormaps may be integrated by providing a numpy array of shape (l,l,3) detailing a 2d colormap instead of a name when calling  colorstamps.apply_stamp()
@@ -99,7 +99,7 @@ overlaid_ax = stamp.overlay_ax(ax, lower_left_corner = [0.66,0.85], width = 0.2)
 overlaid_ax.set_ylabel(r'$\phi$')
 overlaid_ax.set_xlabel(r'$\omega$')
 ```
-![](/images/custom_cmap.png?raw=true)
+![](docs/source/images/custom_cmap.png?raw=true)
 
 # support
 Any contributions that would provide additional colormaps for are welcome, as are contributions to increase the functionality.
