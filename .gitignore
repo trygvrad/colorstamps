@@ -1,0 +1,5 @@
+__pycache__/
+build/
+docs/build
+.ipynb_*
+*.egg-info/

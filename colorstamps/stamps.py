@@ -283,6 +283,14 @@ def get_cmap(name, l = None, rot = None, J = None, sat = None, limit_sat = None,
         return teuling(l = l, a = 0.32, order = [1,0,2], white_center = True)
     elif name == 'teuling3w':
         return teuling(l = l, a = 0.32, order = [1,0,2], green_multiplier = 0.75, white_center = True)
+    elif name == 'orangeBlue':
+        return bilinear(l)
+    elif name == 'greenPurple':
+        return bilinear(l, c0 = [0.5,1,0], c1 = [0.5,0,1])
+    elif name == 'greenTealBlue':
+        return bilinear(l, c0 = [0,1,0], c1 = [0,0,1])
+    elif name == 'redPurpleBlue':
+        return bilinear(l, c0 = [1,0,0], c1 = [0,0,1])
     elif name in mpl_cmaps:
         return get_2dcmap_from_mpl(name, J = J, l = l, limit_sat = limit_sat)
     else:
@@ -593,6 +601,26 @@ def teuling(l = 256, a = 0.32, order = [1,0,2], white_center = False, green_mult
         lspace_second = np.linspace(-lim,lim,l)**2
         r = np.sqrt(lspace_second[:,np.newaxis]+ lspace_second[np.newaxis,:])
         rgb[:,:,:] += 0.5*(1-r)[:,:,np.newaxis]
+    rgb[rgb<0] = 0
+    rgb[rgb>1] = 1
+    return rgb
+
+
+def bilinear(l = 256, c0 = [1,0.5,0], c1 = [0,0.5,1]):
+    '''
+    Returns an l by l colormap that interpolates linearly between 4 colors;
+    black, c0, c1 and c0+c1.
+
+    Args:
+        l: size of the colormap, defaults to 256
+        c0: [r,g,b] array-like defining the color at the top left corner, defaults to [1,0.5,0] (orange)
+        c1: [r,g,b] array-like defining the color at the bottom right corner, defaults to [0,0.5,1]] (light blue)
+    returns:
+        a (l,l,3) numpy array of rgb values
+    '''
+    rgb = np.zeros((l,l,3))
+    rgb[:,:,:] = np.linspace(0,1,l)[:,np.newaxis,np.newaxis]*np.array(c0)[np.newaxis,np.newaxis,:]
+    rgb[:,:,:] += np.linspace(0,1,l)[np.newaxis,:,np.newaxis]*np.array(c1)[np.newaxis,np.newaxis,:]
     rgb[rgb<0] = 0
     rgb[rgb>1] = 1
     return rgb

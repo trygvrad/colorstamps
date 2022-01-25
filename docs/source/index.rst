@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to colorstamps's documentation!
-======================================
+========================================
 Colorstamps is a package containting 2d colormaps and helper functions to use the colormaps.
 Most included colormaps are based on the 'CAM02-LCD' colorspace as defined in the package colorspacious (https://pypi.org/project/colorspacious/)
 
