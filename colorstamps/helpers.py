@@ -137,6 +137,7 @@ def apply_stamp(data_0, data_1, cmap, vmin=None, vmax = None, vmin_0 = None, vma
         angle = np.concatenate(([angle[-1]-2*np.pi],angle,[2*np.pi+angle[0]]))
         idx[ np.abs(phis_to_fit - angle[idx-1]) < np.abs(phis_to_fit - angle[idx])] -=1
         idx -= 1
+        idx[idx == len(angle)-2] = 0 # wraps around
         loc_a = a_vec[idx]
         loc_b = b_vec[idx]
 
