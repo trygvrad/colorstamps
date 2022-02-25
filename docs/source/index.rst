@@ -54,6 +54,8 @@ The colormaps are encoded as numpy arrays of shape (l,l,3) with rgb color values
    
    helpers.rst
    
+   lineplots.rst
+   
    
 :ref:`colorstamps.stamps <stamps>` contain functions that generate colormaps, and the :ref:`documentation <stamps>` also shows how they can be customized.
 

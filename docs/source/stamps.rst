@@ -1,9 +1,7 @@
 .. _stamps:
 
-
 colorstamps.stamps module
 -------------------------
-
 
 Colormap by name
 #################
