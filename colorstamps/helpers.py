@@ -279,7 +279,7 @@ class Stamp:
         self.vmax_0 = 1
         self.vmax_1 = 1
 
-    def overlay_ax(self, ax, lower_left_corner = [0.66, 0.66], width = None, height = 0.25):
+    def overlay_ax(self, ax, lower_left_corner = [0.66, 0.66], width = None, height = 0.25, path_effects=None):
         '''
         overlays new axes over the existing axes ('ax') with the colormap
 
@@ -313,6 +313,20 @@ class Stamp:
         cmap_ax = fig.add_axes(new_pos)
         extent = (self.vmin_1, self.vmax_1, self.vmin_0, self.vmax_0)
         cmap_ax.imshow(self.cmap, origin = 'lower', extent = extent, aspect='auto')
+
+        if path_effects:
+            for tick in cmap_ax.xaxis.get_major_ticks():
+                tick.label1.set_path_effects(path_effects)
+            for tick in cmap_ax.yaxis.get_major_ticks():
+                tick.label1.set_path_effects(path_effects)
+            for minor_tick in cmap_ax.xaxis.get_minor_ticks():
+                minor_tick.label1.set_path_effects(path_effects)
+            for minor_tick in cmap_ax.yaxis.get_minor_ticks():
+                minor_tick.label1.set_path_effects(path_effects)
+            cmap_ax.title.set_path_effects(path_effects)
+            cmap_ax.xaxis.label.set_path_effects(path_effects)
+            cmap_ax.yaxis.label.set_path_effects(path_effects)
+
         return cmap_ax
 
     def show_in_ax(self, cmap_ax):
