@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='colorstamps',
-    version='0.1.2',
+    version='0.1.3',
     description='2D colormaps for every occation',
     url='https://github.com/trygvrad/colorstamps',
     author='Trygve Ræder',
