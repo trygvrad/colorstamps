@@ -10,7 +10,7 @@ Installation:
 pip install colorstamps
 
 Example:
-```
+```python
 import matplotlib.pyplot as plt
 import colorstamps
 
@@ -42,7 +42,7 @@ Examples of included colormaps are shown below:
 ![](docs/source/images/colormaps.png?raw=true)
 ### Customization
 All the colormaps are called by colorstamps.stamps.get_cmap() and the following keyword can be used with either colorstamps.apply_stamp() or colorstamps.stamps.get_cmap() to customize the colormaps:
-```
+```python
 l: int, the size of the colormap will be (l,l), defaults to 256 if None
   rot: float, rotation of the colormap (where applicable)
   J: array-like of length 2 (float,float), determins min and max luminocity where applicable
@@ -63,7 +63,7 @@ Additionally, for radial colormaps the name may have a postfix separated by a sp
 
 The package also includes a method for evaluating colormaps, by evaluating the distribution of lighness, hue, saturation, 
 and how it can be percieved by those with partial colorblindness
-```
+```python
 stamp = colorstamps.Stamp('hsv')
 fig, ax = stamp.eval()
 stamp = colorstamps.Stamp('peak')
@@ -84,7 +84,7 @@ Additional colormaps available by converting 1d colormaps in matplotlib to 2d co
 
 ### User-provided colormaps
 Custom colormaps may be integrated by providing a numpy array of shape (l,l,3) detailing a 2d colormap instead of a name when calling  colorstamps.apply_stamp()
-```
+```python
 my_cmap = np.zeros((256,256,3))
 my_cmap[:,:,0] = np.linspace(0,1,256)[:,np.newaxis]
 my_cmap[:,:,2] = np.linspace(0,1,256)[np.newaxis,:]
@@ -103,7 +103,7 @@ overlaid_ax.set_xlabel(r'$\omega$')
 
 ### Colormaps for line plots
 Colormaps can also be used in combination with line plots:
-```
+```python
 # intensities: array of shape (l,l,n)
 # omega: array of shape (l,l)
 # phi: array of shape (l,l)
