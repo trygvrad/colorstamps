@@ -10,7 +10,7 @@ Installation:
 pip install colorstamps
 
 Example:
-```
+```python
 import matplotlib.pyplot as plt
 import colorstamps
 
@@ -63,7 +63,7 @@ Additionally, for radial colormaps the name may have a postfix separated by a sp
 
 The package also includes a method for evaluating colormaps, by evaluating the distribution of lighness, hue, saturation, 
 and how it can be percieved by those with partial colorblindness
-```
+```python
 stamp = colorstamps.Stamp('hsv')
 fig, ax = stamp.eval()
 stamp = colorstamps.Stamp('peak')
@@ -84,7 +84,7 @@ Additional colormaps available by converting 1d colormaps in matplotlib to 2d co
 
 ### User-provided colormaps
 Custom colormaps may be integrated by providing a numpy array of shape (l,l,3) detailing a 2d colormap instead of a name when calling  colorstamps.apply_stamp()
-```
+```python
 my_cmap = np.zeros((256,256,3))
 my_cmap[:,:,0] = np.linspace(0,1,256)[:,np.newaxis]
 my_cmap[:,:,2] = np.linspace(0,1,256)[np.newaxis,:]
@@ -103,7 +103,7 @@ overlaid_ax.set_xlabel(r'$\omega$')
 
 ### Colormaps for line plots
 Colormaps can also be used in combination with line plots:
-```
+```python
 # intensities: array of shape (l,l,n)
 # omega: array of shape (l,l)
 # phi: array of shape (l,l)
@@ -137,6 +137,59 @@ overlaid_ax.set_xlabel(r'$\phi$')
 overlaid_ax.set_ylabel(r'$\omega$')
 ```
 ![](docs/source/images/line_plot.png?raw=true)
+
+
+### Text path effects
+When embedding the 2D colormap into the plot itself in full or just a part of it, it can happen that the labels and or ticks of the colormap are not visible due to being very similar in color to the picture itself. You can fix this by passing appropriate `path_effects` to add an outline to labels and ticks.
+
+```python
+import matplotlib.pyplot as plt
+import colorstamps
+import matplotlib.patheffects as PathEffects
+
+img = colorstamps.helpers.get_random_data()
+rgb, stamp = colorstamps.apply_stamp(
+    img[:, :, 0],
+    img[:, :, 1],
+    "funnel",
+    vmin_0=-1.2,
+    vmax_0=1.2,
+    vmin_1=-1,
+    vmax_1=1,
+)
+
+
+fig, axes = plt.subplots(2)
+
+# plot the original image
+ax = axes[0]
+ax.imshow(rgb)
+
+# show colormap as overlay
+overlaid_ax = stamp.overlay_ax(
+    ax, lower_left_corner=[0.7, 0.85], width=0.2, path_effects=None
+)
+overlaid_ax.set_ylabel(r"$\phi$")
+overlaid_ax.set_xlabel(r"$\omega$")
+
+
+# plot the fix
+ax = axes[1]
+ax.imshow(rgb)
+
+# add path effects to make text more readable
+path_effects = [PathEffects.withStroke(linewidth=3, foreground="w")]
+
+# show colormap as overlay
+overlaid_ax = stamp.overlay_ax(
+    ax, lower_left_corner=[0.7, 0.85], width=0.2, path_effects=path_effects
+)
+overlaid_ax.set_ylabel(r"$\phi$")
+overlaid_ax.set_xlabel(r"$\omega$")
+```
+
+![](docs/source/images/path_effects_example.png?raw=true)
+
 
 # support
 Any contributions that would provide additional colormaps for are welcome, as are contributions to increase the functionality.
