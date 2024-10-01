@@ -42,7 +42,7 @@ Examples of included colormaps are shown below:
 ![](docs/source/images/colormaps.png?raw=true)
 ### Customization
 All the colormaps are called by colorstamps.stamps.get_cmap() and the following keyword can be used with either colorstamps.apply_stamp() or colorstamps.stamps.get_cmap() to customize the colormaps:
-```python
+```
 l: int, the size of the colormap will be (l,l), defaults to 256 if None
   rot: float, rotation of the colormap (where applicable)
   J: array-like of length 2 (float,float), determins min and max luminocity where applicable
