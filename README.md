@@ -191,5 +191,15 @@ overlaid_ax.set_xlabel(r"$\omega$")
 ![](docs/source/images/path_effects_example.png?raw=true)
 
 
-# support
+# Support
 Any contributions that would provide additional colormaps for are welcome, as are contributions to increase the functionality.
+
+# Alternatives
+
+Multiple similar projects exist:
+
+- https://github.com/endolith/complex_colormap
+- https://github.com/34j/colormap-complex
+- https://github.com/spinthil/pycolormap-2d
+
+And the functionality is currently being added to matplotlib, tracked in https://github.com/orgs/matplotlib/projects/9
